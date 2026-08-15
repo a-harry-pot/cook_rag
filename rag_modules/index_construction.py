@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class IndexConstructionModule:
     """索引构建模块 - 负责向量化和索引构建"""
 
-    def __init__(self, model_name: str = "BAAI/bge-small-zh-v1.5", index_save_path: str = "./vector_index"):
+    def __init__(self, model_name: str = "BAAI/bge-small-zh", index_save_path: str = "./vector_index"):
         """
         初始化索引构建模块
 

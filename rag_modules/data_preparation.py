@@ -188,7 +188,7 @@ class DataPreparationModule:
             try:
                 #检查文档内容是否包含Markdown标题
                 content_preview=doc.page_content[:200]
-                has_headers=any(line.strip().startwith('#') for line in content_preview.split('\n'))
+                has_headers=any(line.strip().startswith('#') for line in content_preview.split('\n'))
 
                 if not has_headers:
                     logger.warning(f"文档 {doc.metadata.get('dish_name', '未知')} 内容中没有发现Markdown标题")

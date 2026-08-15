@@ -13,6 +13,19 @@ from langchain_core.documents import Document
 logger = logging.getLogger(__name__)
 
 
+def _tokenize_zh(text: str):
+    """
+    中文分词函数，供 BM25Retriever 使用。
+    用 jieba 分词后过滤空白与纯标点 token，解决 rank_bm25 默认按空格分词
+    导致中文查询整体失效的问题。jieba 未安装时降级为默认 split。
+    """
+    try:
+        import jieba
+    except ImportError:
+        return [w for w in text.split() if w.strip()]
+    return [t for t in jieba.lcut(text) if t.strip()]
+
+
 class RetrievalOptimizationModule:
     """检索优化模块 - 负责混合检索和过滤"""
 
@@ -38,10 +51,11 @@ class RetrievalOptimizationModule:
             search_kwargs={"k": 5}
         )
 
-        # BM25检索器
+        # BM25检索器（使用 jieba 中文分词，避免默认 split 导致中文检索失效）
         self.bm25_retriever = BM25Retriever.from_documents(
             self.chunks,
-            k=5
+            k=5,
+            preprocess_func=_tokenize_zh,
         )
 
         logger.info("检索器设置完成")

@@ -14,7 +14,7 @@ class RAGConfig:
     index_save_path: str = "./vector_index"
 
     # 模型配置
-    embedding_model: str = "BAAI/bge-small-zh-v1.5"
+    embedding_model: str = "BAAI/bge-small-zh"
     llm_model: str = "deepseek-v4-flash"
 
     # 检索配置
