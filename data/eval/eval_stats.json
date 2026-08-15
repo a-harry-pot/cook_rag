@@ -1,0 +1,25 @@
+{
+  "total_recipes": 322,
+  "sampled_recipes": 80,
+  "retrieval_samples": 345,
+  "generation_samples": 40,
+  "robustness_samples": 15,
+  "retrieval_by_query_type": {
+    "detail": 240,
+    "general": 80,
+    "list": 25
+  },
+  "per_category_sampled": {
+    "荤菜": 8,
+    "素菜": 8,
+    "汤品": 8,
+    "甜品": 8,
+    "早餐": 8,
+    "主食": 8,
+    "水产": 8,
+    "调料": 8,
+    "饮品": 8,
+    "半成品": 8
+  },
+  "seed": 42
+}
